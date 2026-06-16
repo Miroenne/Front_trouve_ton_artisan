@@ -1,3 +1,32 @@
+body{
+    font-size: 16px;
+}
+
+h1, h2, h3, 
+h4, h5, h6 {
+    color: rgb(0, 73, 124) !important;
+    font-weight: bold;
+}
+
+h2{
+    margin-bottom: 45px;
+}
+
+footer{
+    background-color: rgb(0, 116, 199);
+    color: white;   
+    width: 100%;
+}
+
+footer p, footer a {
+    margin: 0;
+    font-size: 1rem;
+}
+
+main{
+    font-size: 1.3rem;
+}
+
 .rateStar {
     width: 16px;
     height: 16px;
@@ -9,4 +38,61 @@
 
 .p-0 {
     padding: 0;
+}
+
+.search-container{
+    border-bottom: 1px solid blue;
+    border-right: 1px solid blue;
+}
+
+.separate{
+    width: 100%;
+    border: 2px solid rgb(0, 73, 124);
+    margin: 50px 0;
+}
+
+.white-separate{
+    border-color: white;
+    border-width: 1px ;
+    margin: 25px 0 ;
+    width: 95%;
+}
+
+.mt-50{
+    margin-top: 50px;
+}
+
+.card:hover{
+    box-shadow: 4px 4px 4px rgba(0, 116, 199, 0.35);
+}
+
+#searchIcon{
+    color: rgb(0, 116, 199);
+    width: 25px;
+    height: 25px;
+}
+
+#searchBtn {
+    border : 0;
+    padding-bottom: 15px;
+    width: 25px;
+    height: 25px;
+}
+
+#searchInput {
+    border: 0;
+    height: 25px;
+}
+
+#navBarLogo{
+    width: 200px;
+    height: 100px;
+    object-fit:cover;
+}
+
+#searchFormSm {
+    height: 100px;
+    display: flex;
+    position: relative;
+    top: 110px;
 }
