@@ -2,13 +2,18 @@ import {useEffect, useState} from 'react'
 import logo from '../assets/img/Logo.png';
 import searchIcon from '../assets/img/search_icon.svg'
 
-function handleScreenWidth (){
-   // const screen = window.innerWidth;
-   // const searchForm = document.querySelector(#searchFormMd);
-
-
-
-}
+function displaySearchForm() {     
+    console.log('dans la fonction displaysearchform')
+    const searchFormSm = document.getElementById('searchFormSm') 
+    
+    if (searchFormSm.classList.contains('d-none')){
+        console.log('classe d-none présente')
+        searchFormSm.classList.remove('d-none');
+    }else if (!searchFormSm.classList.contains('d-none')){
+        console.log('classe d-none non présente')
+        searchFormSm.classList.add('d-none')
+    }      
+ }
 
 const Nav = () => {
 
@@ -38,21 +43,28 @@ const Nav = () => {
             fetchCategories();
         }, []);
 
+        
+
+
     return(
         <nav class="border border-1 border-bottom shadow navbar navbar-expand-lg bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand"  href="/"><img id='navBarLogo' src={logo} alt="logo" /></a>
                 <div>
-                    <form id='searchFormMd' class="d-flex" role="search">
-                        <div className='search-container px-3 pb-1 container-fluid'>
-                            <div className='container-fluid p-0 m-0 row justify-content-between'>
-                                <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />
-                                <button className='col-2 p-0' id='searchBtn'><img src={searchIcon} id='searchIcon' className='col-6' alt="Icône rechercher" /></button>
+                    
+                    <div id='searchFormMd'>
+                        <form  class="d-flex" role="search">
+                            <div className='search-container px-3 pb-1 container-fluid'>
+                                <div className='container-fluid p-0 m-0 row justify-content-between'>
+                                    <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />
+                                    <button className='col-2 p-0' id='searchBtn'><img src={searchIcon} id='' className='col-6 searchIcon' alt="Icône rechercher" /></button>
+                                    
+                                </div>
                                 
-                            </div>
-                            
-                        </div>                                          
-                    </form>
+                            </div>                                          
+                        </form>
+                    </div>
+                    
                     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-lg-0">
                     {categories.map((catégorie) => (
@@ -63,12 +75,28 @@ const Nav = () => {
                     </ul>                
                 </div>                
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <div className='row justify-content-between' id='smBtnContainer'>
+                    <div id='searchFormBtnContainer' className='col-4 '>                          
+                        <button type="submit" className='mt-2 p-0' id='searchBtn' onClick={displaySearchForm}><img src={searchIcon} id='' className='col-6 searchIcon' alt="Icône rechercher" /></button> 
+                                               
+                </div>
+                <button class="navbar-toggler col-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-                </button>                
+                </button>  
+                </div>
+                              
             </div>
-            <div id='searchFormSm' className='bg-primary'>
-
+            <div id='searchFormSm' className=''>
+                   <form  class="d-flex" role="search">
+                        <div className='search-container px-3 pb-1 container-fluid'>
+                            <div className='container-fluid p-0 m-0 row justify-content-between'>
+                                <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />
+                                <button className='col-2 p-0' id='searchBtn'><img src={searchIcon} id='' className='col-6 searchIcon' alt="Icône rechercher" /></button>
+                                
+                            </div>
+                            
+                        </div>                                          
+                    </form>
             </div>
         </nav>
     )
