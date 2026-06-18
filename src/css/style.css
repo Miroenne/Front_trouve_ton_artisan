@@ -40,6 +40,12 @@ main{
     padding: 0;
 }
 
+.link{
+    text-decoration: none;
+    color: var(--deep-blue);
+    margin: 0 5px;
+}
+
 .search-container{
     border-bottom: 1px solid var(--deep-blue);
     border-right: 1px solid var(--deep-blue);
@@ -108,4 +114,26 @@ main{
     width: 100%;
     z-index: 1; 
     padding: 10px 15px ;   
+}
+
+#category{
+    min-height:600px ;
+    padding-top: 25px;
+}
+#category h1{
+    margin-bottom: 50px;
+}
+
+#errorPic {
+    width: 550px;
+    height: 550px;
+    margin: 50px 0;
+   
+}
+
+#errorMessage{
+    color: var(--deep-blue);
+    font-weight: bold;
+    font-size: 2rem;
+    max-width: 500px;
 }

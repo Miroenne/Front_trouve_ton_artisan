@@ -29,17 +29,17 @@ const Footer = () => {
             </div>
             <div className="container text-center">
                 <div className="mx-auto">
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Mentions légales</a>
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Données personnelles</a>
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Accessibilité : partiellement conforme</a>
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Presse</a>    
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Mentions légales</a>
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Données personnelles</a>
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Accessibilité : partiellement conforme</a>
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Presse</a>    
                 </div>
                 <div>
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Marché publics</a>
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Venir à la Région</a>
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Contacts</a>
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Politique des cookies</a>
-                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="">Gestion des cookies</a>
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Marché publics</a>
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Venir à la Région</a>
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Contacts</a>
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Politique des cookies</a>
+                    <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Gestion des cookies</a>
                 </div>
                 
             </div>

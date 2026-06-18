@@ -1,8 +1,17 @@
+@media(max-width: 768px){
+
+    #errorPic{
+        width: 350px;
+        height: 350px;       
+    }
+}
+
 @media (max-width: 992px){  
 
     #searchFormMd{
         display: none;
     }
+
 }
 
 @media (min-width: 993px){
