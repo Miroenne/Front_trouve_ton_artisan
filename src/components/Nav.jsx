@@ -67,7 +67,7 @@ const Nav = (props) => {
                             <div className='search-container px-3 pb-1 container-fluid'>
                                 <div className='container-fluid p-0 m-0 row justify-content-between'>
                                     <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />
-                                    <button className='col-2 p-0' id='searchBtn'><img src={searchIcon} id='' className='col-6 searchIcon' alt="Icône rechercher" /></button>
+                                    <button className='col-2 p-0' id='searchBtn'><img src={searchIcon} id='' className='col-6 search-icon' alt="Icône rechercher" /></button>
                                     
                                 </div>
                                 
@@ -90,7 +90,7 @@ const Nav = (props) => {
                 </div>
                 <div className='row justify-content-between' id='smBtnContainer'>
                     <div id='searchFormBtnContainer' className='col-4 '>                          
-                        <button type="submit" className='mt-2 p-0' id='searchBtn' onClick={displaySearchForm}><img src={searchIcon} id='' className='col-6 searchIcon' alt="Icône rechercher" /></button> 
+                        <button type="submit" className='mt-2 p-0' id='searchBtn' onClick={displaySearchForm}><img src={searchIcon} id='' className='col-6 search-icon' alt="Icône rechercher" /></button> 
                                                
                 </div>
                 <button class="navbar-toggler col-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -104,7 +104,7 @@ const Nav = (props) => {
                     <div className='search-container px-3 pb-1 container-fluid'>
                         <div className='container-fluid p-0 m-0 row justify-content-between'>
                             <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />
-                            <button className='col-2 p-0' id='searchBtn'><img src={searchIcon} id='' className='col-6 searchIcon' alt="Icône rechercher" /></button>
+                            <button className='col-2 p-0' id='searchBtn'><img src={searchIcon} id='' className='col-6 search-icon' alt="Icône rechercher" /></button>
                             
                         </div>
                         

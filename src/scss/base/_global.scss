@@ -1,35 +1,56 @@
-body{
+/* TAGS */
+
+body {
+    font-family: 'Graphik', Arial, sans-serif;
     font-size: 16px;
 }
 
-h1, h2, h3, 
-h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     color: var(--deep-blue) !important;
     font-weight: bold;
 }
 
-h2{
+h2 {
     margin-bottom: 45px;
 }
 
-footer{
+footer {
     background-color: var(--light-blue);
-    color: white;   
+    color: white;
     width: 100%;
+
+    p,
+    a {
+        margin: 0;
+        font-size: 1rem;
+    }
 }
 
-footer p, footer a {
-    margin: 0;
-    font-size: 1rem;
-}
-
-main{
+main {
     font-size: 1.3rem;
 }
 
-.rateStar {
+strong{
+    font-weight: normal;
+}
+
+
+/* CLASS */
+
+.rate-star {
     width: 16px;
     height: 16px;
+}
+
+.rate-big-star{
+    width: 50px;
+    height: 50px;
+    margin: 0 10px;
 }
 
 .px-25 {
@@ -40,52 +61,69 @@ main{
     padding: 0;
 }
 
-.link{
+.link {
     text-decoration: none;
     color: var(--deep-blue);
     margin: 0 5px;
 }
 
-.search-container{
+.search-container {
     border-bottom: 1px solid var(--deep-blue);
     border-right: 1px solid var(--deep-blue);
 }
 
-.separate{
+.separate {
     width: 100%;
     border: 2px solid var(--deep-blue);
     margin: 50px 0;
 }
 
-.white-separate{
+.white-separate {
     border-color: white;
-    border-width: 1px ;
-    margin: 25px 0 ;
+    border-width: 1px;
+    margin: 25px 0;
     width: 95%;
 }
 
-.mt-50{
+
+
+.mt-50 {
     margin-top: 50px;
 }
 
-.card:hover{
-    box-shadow: 4px 4px 4px var(--light-blue-opacity35);
+.card {
+    &:hover {
+        box-shadow: 4px 4px 4px var(--light-blue-opacity35);
+    }
 }
 
-.searchIcon{
+.search-icon {
     color: rgb(0, 116, 199);
     width: 25px;
     height: 25px;
 }
 
+.society-details{
+    color: var(--deep-blue);
+    font-size: larger;
+
+    .light-blue{
+        color: var(--light-blue);
+    }
+}
+
+
+
+/* ID */
+
 #searchBtn {
-    border : 0;
+    border: 0;
     padding-bottom: 15px;
     width: 25px;
     height: 25px;
 }
 
-#searchFormBtnContainer{
+#searchFormBtnContainer {
     width: 25px;
     height: 25px;
 }
@@ -95,10 +133,10 @@ main{
     height: 25px;
 }
 
-#navBarLogo{
+#navBarLogo {
     width: 200px;
     height: 100px;
-    object-fit:cover;
+    object-fit: cover;
 }
 
 #smBtnContainer {
@@ -106,32 +144,39 @@ main{
     margin-right: 15px;
 }
 
-#searchFormSm{
-    position:absolute;
+#searchFormSm {
+    position: absolute;
     top: 135px;
     left: -1px;
     height: 50px;
     width: 100%;
-    z-index: 1; 
-    padding: 10px 15px ;   
+    z-index: 1;
+    padding: 10px 15px;
 }
 
-#category{
-    min-height:600px ;
+#category {
+    min-height: 600px;
     padding-top: 25px;
+
+    h1 {
+        margin-bottom: 50px;
+    }
 }
-#category h1{
-    margin-bottom: 50px;
+
+#societyPic{
+    width: 300px;
+    height: 300px;
 }
+
+
 
 #errorPic {
     width: 550px;
     height: 550px;
     margin: 50px 0;
-   
 }
 
-#errorMessage{
+#errorMessage {
     color: var(--deep-blue);
     font-weight: bold;
     font-size: 2rem;
