@@ -1,6 +1,7 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import DisplaySociety from "../components/Display_Artisan";
+import Form from "../components/Form";
 import {useLocation} from "react-router-dom"
 import { useEffect, useState } from "react";
 
@@ -41,9 +42,9 @@ const Artisan = () => {
                 <Nav />
             </header>
             <main>
-                <div className="container-fluid mt-5">
-                    <div className="container-fluid row">
-                        <div className="col-lg-5">
+                <div className="container-fluid mt-5 p-0">
+                    <div className="container-fluid row p-0 m-0">
+                        <div className="col-lg-6">
                             {society && 
                                 ( 
                                     <DisplaySociety 
@@ -59,8 +60,8 @@ const Artisan = () => {
                             }
                         </div>
                         
-                        <div className="society-container col-lg-5" id='form'>
-                            <h1>test</h1>
+                        <div className="society-container col-lg-6 mx-auto text-start" id='form'>
+                            <Form />
                         </div>
                         
                     </div>       

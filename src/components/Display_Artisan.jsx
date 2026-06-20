@@ -2,8 +2,7 @@ import fullStar from "../assets/img/full_star.svg";
 import halfStar from "../assets/img/half_star.svg";
 import emptyStar from "../assets/img/empty_star.svg";
 import renderStars from "../utils/renderStars";
-import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+
 
 const DisplaySociety = (props) => {
     
@@ -11,8 +10,8 @@ const DisplaySociety = (props) => {
     
    
     return(
-        <div className="container-fluid">
-            <div className="container row mb-5">
+        <div className="container-fluid p-0">
+            <div className="container mx-0 p-0 row mb-5">
                 <div className="col-6 text-start">
                     <img id="societyPic" src={props.picture} alt={"photo " + props.name} />
                 </div>
