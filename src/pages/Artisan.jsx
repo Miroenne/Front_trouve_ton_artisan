@@ -35,7 +35,6 @@ const Artisan = () => {
 
     }, []);
 
-
     return(
         <div>
             <header>
@@ -61,7 +60,7 @@ const Artisan = () => {
                         </div>
                         
                         <div className="society-container col-lg-6 mx-auto text-start" id='form'>
-                            <Form />
+                           { society && (<Form email={society.email}/>)}
                         </div>
                         
                     </div>       
@@ -69,7 +68,9 @@ const Artisan = () => {
                 
                 
             </main>
-            
+            <footer>
+                <Footer />
+            </footer>
             
         </div>
     )

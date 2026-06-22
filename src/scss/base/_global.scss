@@ -168,7 +168,34 @@ strong{
     height: 300px;
 }
 
+#formTitle{
+    font-size: 2em;
+}
 
+#contactForm{
+
+    padding: 0 25px 0 25px;
+
+    label{
+        margin-left: 50px;
+        margin-top: 25px;        
+    }
+
+    textarea{
+       width: 90%;
+    };
+
+    input, textarea{        
+        margin-left: 50px;
+        box-shadow: 4px 4px 4px var(--light-blue-opacity35);
+    }
+    button{
+        margin-top: 35px;
+        background-color: var(--light-blue);
+        width: 150px;
+        padding: 5px 0;
+    }
+}
 
 #errorPic {
     width: 550px;
@@ -181,8 +208,4 @@ strong{
     font-weight: bold;
     font-size: 2rem;
     max-width: 500px;
-}
-
-#form{
-   
 }

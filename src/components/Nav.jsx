@@ -7,12 +7,12 @@ function displaySearchForm() {
     console.log('dans la fonction displaysearchform')
     const searchFormSm = document.getElementById('searchFormSm') 
     
-    if (searchFormSm.classList.contains('d-none')){
-        console.log('classe d-none présente')
-        searchFormSm.classList.remove('d-none');
-    }else if (!searchFormSm.classList.contains('d-none')){
-        console.log('classe d-none non présente')
-        searchFormSm.classList.add('d-none')
+    if (searchFormSm.classNameList.contains('d-none')){
+        console.log('classNamee d-none présente')
+        searchFormSm.classNameList.remove('d-none');
+    }else if (!searchFormSm.classNameList.contains('d-none')){
+        console.log('classNamee d-none non présente')
+        searchFormSm.classNameList.add('d-none')
     }      
  }
 
@@ -57,13 +57,13 @@ const Nav = (props) => {
 
 
     return(
-        <nav class="border border-1 border-bottom shadow navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand"  href="/"><img id='navBarLogo' src={logo} alt="logo" /></a>
+        <nav className="border border-1 border-bottom shadow navbar navbar-expand-lg bg-body-tertiary">
+            <div className="container-fluid">
+                <a className="navbar-brand"  href="/"><img id='navBarLogo' src={logo} alt="logo" /></a>
                 <div>
                     
                     <div id='searchFormMd'>
-                        <form  class="d-flex" role="search">
+                        <form  className="d-flex" role="search">
                             <div className='search-container px-3 pb-1 container-fluid'>
                                 <div className='container-fluid p-0 m-0 row justify-content-between'>
                                     <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />
@@ -75,10 +75,10 @@ const Nav = (props) => {
                         </form>
                     </div>
                     
-                    <div class="collapse mt-3 navbar-collapse justify-content-end" id="navbarSupportedContent">
-                    <ul class="navbar-nav mb-2 mb-lg-0">
+                    <div className="collapse mt-3 navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul className="navbar-nav mb-2 mb-lg-0">
                     {categories.map((catégorie) => (
-                        <li class="nav-item">
+                        <li className="nav-item">
                             <NavLink className="link" to={'/catégorie'} 
                             state={{category: catégorie.nom_Catégorie}}>
                                 {catégorie.nom_Catégorie}
@@ -93,14 +93,14 @@ const Nav = (props) => {
                         <button type="submit" className='mt-2 p-0' id='searchBtn' onClick={displaySearchForm}><img src={searchIcon} id='' className='col-6 search-icon' alt="Icône rechercher" /></button> 
                                                
                 </div>
-                <button class="navbar-toggler col-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <button className="navbar-toggler col-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
                 </button>  
                 </div>
                               
             </div>
             <div id='searchFormSm' className=''>
-                <form  class="d-flex" role="search">
+                <form  className="d-flex" role="search">
                     <div className='search-container px-3 pb-1 container-fluid'>
                         <div className='container-fluid p-0 m-0 row justify-content-between'>
                             <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />

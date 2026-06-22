@@ -72,6 +72,13 @@
         border-top: 3px solid var(--deep-blue);
         width: 95%;
     }
+
+    #contactForm{
+        input, textarea, label{  
+        margin-left: auto;
+        margin-right: auto;        
+        }
+    }
 }
 
 @media (min-width: 993px) {
