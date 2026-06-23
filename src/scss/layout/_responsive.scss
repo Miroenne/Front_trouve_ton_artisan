@@ -80,9 +80,8 @@
         }
     }
 
-    #categoriesMenu{
-        height: 87vh;
-        z-index: 1;
+    #categoriesMenuSm{
+        height: 84vh;        
         position: absolute;
         top: 87px;
         background-color: white;
@@ -91,6 +90,8 @@
 }
 
 @media (min-width: 993px) {
+    
+        
     #searchFormSm,
     #smBtnContainer {
         display: none;
@@ -106,5 +107,9 @@
 
     #form{
         border-left: 4px solid var(--deep-blue);
+    }
+
+    #categoriesMenuSm{
+        display: none;
     }
 }

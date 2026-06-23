@@ -6,27 +6,28 @@ import { NavLink } from 'react-router-dom';
 
 function displaySearchForm() {     
     console.log('dans la fonction displaysearchform')
-    const searchFormSm = document.getElementById('searchFormSm') 
-    
-    if (searchFormSm.classList.contains('d-none')){
-        console.log('class d-none présente')
-        searchFormSm.classList.remove('d-none');
-    }else if (!searchFormSm.classList.contains('d-none')){
-        console.log('class d-none non présente')
-        searchFormSm.classList.add('d-none')
-    }      
+    const searchFormSm = document.getElementById('searchFormSm');
+    searchFormSm.classList.toggle('d-none');
 }
 
 function displayCategoriesMenu() {     
     
-    const catMenu = document.getElementById('categoriesMenu') 
-    
-    if (catMenu.classList.contains('d-none')){        
-        catMenu.classList.remove('d-none');
-    }else if (!catMenu.classList.contains('d-none')){        
-        catMenu.classList.add('d-none')
-    }      
+    const catMenu = document.getElementById('categoriesMenuSm') ;  
+    const pageContent = document.querySelector('.page-content');  
+    catMenu.classList.toggle('d-none');   
+    pageContent.classList.toggle('d-none')
 }
+
+function resetContentDisplay () {    
+
+    if(window.innerWidth > 993){
+        const pageContent = document.querySelector('.page-content')        
+        pageContent.classList.toggle('d-none')
+    }
+}
+
+resetContentDisplay();
+window.addEventListener('resize', resetContentDisplay);
 
 const Nav = (props) => {
 
@@ -98,14 +99,14 @@ const Nav = (props) => {
                         </ul>                
                     </div>                
                 </div>
-                <div className='row justify-content-end' id='smBtnContainer'>
-                    <div id='searchFormBtnContainer' className='col-4 '>                          
+                <div className='row justify-content-end me-0' id='smBtnContainer'>
+                    <div id='searchFormBtnContainer' className='col-4 me-3'>                          
                         <button type="submit" className='mt-2 p-0' id='searchBtn' onClick={displaySearchForm}><img src={searchIcon} 
-                        id='' className='col-6 search-icon' alt="Icône rechercher" /></button>                                                 
+                        id='' className=' search-icon' alt="Icône rechercher" /></button>                                                 
                     </div>
-                    <div id='categoriesMenuBtnContainer' className='col-4 '>                          
+                    <div id='categoriesMenuBtnContainer' className='col-4'>                          
                         <button type="submit" className='mt-2 p-0' id='categoriesMenuBtn' onClick={displayCategoriesMenu}><img src={burgerMenuIcon} 
-                        id='' className='col-6 burger-icon' alt="Burger menu icon" /></button>                                                 
+                        id='' className=' burger-icon' alt="Burger menu icon" /></button>                                                 
                     </div>
                 </div>
                               
@@ -122,10 +123,10 @@ const Nav = (props) => {
                     </div>                                          
                 </form>
             </div>
-            <div className=" mt-3 d-none" id="categoriesMenu">
-                <ul className="" id="">
+            <div className=" mt-3 d-none" id="categoriesMenuSm">
+                <ul className="text-center navbar-nav mb-2 mb-lg-0" id="">
                     {categories.map((catégorie) => (
-                        <li className="nav-item">
+                        <li className="nav-item mt-4 fs-4">
                             <NavLink className="link" to={'/catégorie'} 
                             state={{category: catégorie.nom_Catégorie}}>
                                 {catégorie.nom_Catégorie}

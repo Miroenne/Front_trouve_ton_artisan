@@ -43,7 +43,7 @@ const Category = () => {
                 <Nav />
             </header>
             <main>
-                <div id="category">
+                <div id="category" className="page-content">
                     <div className="container-fluid">
                         <h1 className="text-start ms-4">{categorie}</h1>
                         <div className="row justify-content-evenly">

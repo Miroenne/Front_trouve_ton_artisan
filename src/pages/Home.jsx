@@ -35,35 +35,38 @@ const Home = () => {
                 <Nav/>
             </header>
 
-            <main className="px-25">               
-                <div  className="w-50 mt-50 container justify-self-center text-center">
-                    <h2>Comment trouver mon artisan?</h2>
-                    <p className="mx-auto">
-                        (1) Après avoir choisi la catégorie dans le menu, (2) sélectionnez un artisan et <br />
-                        (3) le contacter via le formulaire de contact. (4) Une réponse sera apportée sous 48H.
-                    </p>
-                </div>
-                <div className="container p-0">
-                    <div className="separate"></div>
-                </div>
-                
-                <div className="container-fluid p-0">
-                    <h2>Artisans du mois</h2>
-                    <div className="row justify-content-evenly">
-                        {top3.map((top3) => (
-                        <div className="col-md-6 col-lg-4" key={top3.id_Artisan}>
-                            <DisplayCard
-                                display="d-none"
-                                societyName={top3.nom}
-                                note={top3.note}
-                                speciality={top3.nom_Spécialité}
-                                city={top3.nom_Ville}
-                            />
-                        </div>
-                    ))}
+            <main className="px-25">   
+                <div className="page-content">
+                    <div  className="w-50 mt-50 container justify-self-center text-center">
+                        <h2>Comment trouver mon artisan?</h2>
+                        <p className="mx-auto">
+                            (1) Après avoir choisi la catégorie dans le menu, (2) sélectionnez un artisan et <br />
+                            (3) le contacter via le formulaire de contact. (4) Une réponse sera apportée sous 48H.
+                        </p>
+                    </div>
+                    <div className="container p-0">
+                        <div className="separate"></div>
                     </div>
                     
-                </div>      
+                    <div className="container-fluid p-0">
+                        <h2>Artisans du mois</h2>
+                        <div className="row justify-content-evenly">
+                            {top3.map((top3) => (
+                            <div className="col-md-6 col-lg-4" key={top3.id_Artisan}>
+                                <DisplayCard
+                                    display="d-none"
+                                    societyName={top3.nom}
+                                    note={top3.note}
+                                    speciality={top3.nom_Spécialité}
+                                    city={top3.nom_Ville}
+                                />
+                            </div>
+                        ))}
+                        </div>
+                        
+                    </div>  
+                </div>            
+                    
             </main>
             <footer>
                 <Footer />

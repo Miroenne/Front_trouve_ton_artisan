@@ -40,8 +40,8 @@ const Artisan = () => {
             <header>
                 <Nav />
             </header>
-            <main>
-                <div className="container-fluid mt-5 p-0">
+            <main>    
+                <div className="container-fluid mt-5 p-0 page-content">
                     <div className="container-fluid row p-0 m-0">
                         <div className="col-lg-6">
                             {society && 
