@@ -39,6 +39,10 @@ strong{
     font-weight: normal;
 }
 
+input{
+    outline: none;
+    border-width: 1px;
+}
 
 /* CLASS */
 
@@ -102,6 +106,16 @@ strong{
     width: 25px;
     height: 25px;
 }
+.search-input {
+    border: 0;
+    height: 25px;
+}
+.search-input:focus{
+    outline: none;
+    border-bottom:1px solid var(--light-blue-opacity35);
+    border-left: 1px solid var(--light-blue-opacity35) ;
+    
+}
 
 .society-details{
     color: var(--deep-blue);
@@ -112,24 +126,19 @@ strong{
     }
 }
 
-
-
-/* ID */
-
-#searchBtn, #submitSearchBtn, #categoriesMenuBtn {
+.form-btn{
     border: 0;
     padding-bottom: 15px;
     width: 25px;
     height: 25px;
 }
 
+
+
+/* ID */
+
 #searchFormBtnContainer {
     width: 25px;
-    height: 25px;
-}
-
-#searchInput {
-    border: 0;
     height: 25px;
 }
 

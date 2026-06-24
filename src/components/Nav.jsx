@@ -2,41 +2,65 @@ import {useEffect, useState} from 'react'
 import logo from '../assets/img/Logo.png';
 import searchIcon from '../assets/img/search_icon.svg'
 import burgerMenuIcon from '../assets/img/burger-menu.svg'
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
+
+const searchFormSm = document.getElementById('searchFormSm');
+const catMenu = document.getElementById('categoriesMenuSm') ;  
+const pageContent = document.querySelector('.page-content'); 
 
 function displaySearchForm() {     
     console.log('dans la fonction displaysearchform')
-    const searchFormSm = document.getElementById('searchFormSm');
     searchFormSm.classList.toggle('d-none');
+
+    if(!catMenu.classList.contains('d-none')){
+        catMenu.classList.add('d-none');
+    }
+    if(pageContent.classList.contains('d-none')){
+        pageContent.classList.remove('d-none')
+    }
 }
 
 function displayCategoriesMenu() {     
     
-    const catMenu = document.getElementById('categoriesMenuSm') ;  
-    const pageContent = document.querySelector('.page-content');  
     catMenu.classList.toggle('d-none');   
     pageContent.classList.toggle('d-none')
+
+    if(!searchFormSm.classList.contains('d-none')){
+        searchFormSm.classList.add('d-none')
+    }
 }
 
 function resetContentDisplay () {    
 
     if(window.innerWidth > 993){
         const pageContent = document.querySelector('.page-content')        
-        pageContent.classList.toggle('d-none')
+        pageContent.classList.remove('d-none')
     }
 }
 
-resetContentDisplay();
 window.addEventListener('resize', resetContentDisplay);
+
+
 
 const Nav = (props) => {
 
-    function handleClick() {
-        const script = props.script;
-        return script;
+    const [searchInput, setSearchInput] = useState("");
+    const navigate = useNavigate();
+    
+    function handleSearch() { 
+        console.log(searchInput)
+        navigate('/Artisan', {state: {name: searchInput}})
+
     }
 
-    
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if(e.key === 'Enter'){
+            console.log(searchInput);
+            navigate('/Artisan', {state: {name: searchInput}})
+        }
+        
+    }
 
     const [categories, setCategories] = useState([]);
     
@@ -74,11 +98,17 @@ const Nav = (props) => {
                 <div>
                     
                     <div id='searchFormLg'>
-                        <form  className="d-flex" role="search">
+                        <form  className="d-flex nav-form" role="search" onSubmit={(e) => {
+                            e.preventDefault();
+                            navigate("/Artisan", { state: { name: searchInput } });
+                        }}>
                             <div className='search-container px-3 pb-1 container-fluid'>
                                 <div className='container-fluid p-0 m-0 row justify-content-between'>
-                                    <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />
-                                    <button className='col-2 p-0' id='searchBtn'><img src={searchIcon} id='' className='col-6 search-icon' alt="Icône rechercher" /></button>
+                                    <input className='p-0 align-self-start col-6 search-input' value={searchInput} 
+                                    onChange={(e) => setSearchInput(e.target.value)} type="search" placeholder='Recherche' aria-label='search' />
+                                    <button className='col-2 p-0 search-btn form-btn' type='button' id='searchBtn' onClick={handleSearch}>
+                                        <img src={searchIcon} id='' className='col-6 search-icon' alt="Icône rechercher" />
+                                    </button>
                                     
                                 </div>
                                 
@@ -101,22 +131,30 @@ const Nav = (props) => {
                 </div>
                 <div className='row justify-content-end me-0' id='smBtnContainer'>
                     <div id='searchFormBtnContainer' className='col-4 me-3'>                          
-                        <button type="submit" className='mt-2 p-0' id='searchBtn' onClick={displaySearchForm}><img src={searchIcon} 
-                        id='' className=' search-icon' alt="Icône rechercher" /></button>                                                 
+                        <button type="submit" className='mt-2 p-0 form-btn' id='displaySmSearchFormBtn' onClick={displaySearchForm}>
+                            <img src={searchIcon} id='' className=' search-icon' alt="Icône rechercher" />
+                        </button>                                                 
                     </div>
                     <div id='categoriesMenuBtnContainer' className='col-4'>                          
-                        <button type="submit" className='mt-2 p-0' id='categoriesMenuBtn' onClick={displayCategoriesMenu}><img src={burgerMenuIcon} 
-                        id='' className=' burger-icon' alt="Burger menu icon" /></button>                                                 
+                        <button type="submit" className='mt-2 p-0 form-btn' id='categoriesMenuBtn' onClick={displayCategoriesMenu}>
+                            <img src={burgerMenuIcon} id='' className=' burger-icon' alt="Burger menu icon" />
+                        </button>                                                 
                     </div>
                 </div>
                               
             </div>
             <div id='searchFormSm' className='d-none'>
-                <form  className="d-flex" role="search">
+                <form  className="d-flex nav-form" role="search" onSubmit={(e) => {
+                    e.preventDefault();
+                    navigate("/Artisan", { state: { name: searchInput } });
+                }}>
                     <div className='search-container px-3 pb-1 container-fluid'>
                         <div className='container-fluid p-0 m-0 row justify-content-between'>
-                            <input className='p-0 align-self-start col-6' id='searchInput' type="search" placeholder='Recherche' aria-label='search' />
-                            <button className='col-2 p-0' id='submitSearchBtn'><img src={searchIcon} id='' className='col-6 search-icon' alt="Icône rechercher" /></button>
+                            <input className='p-0 align-self-start col-6 search-input' value={searchInput} 
+                            onChange={(e) => setSearchInput(e.target.value)} type="search" placeholder='Recherche' aria-label='search' />
+                            <button className='col-2 p-0 form-btn' type='button' id='submitSearchBtn' onClick={handleSearch}>
+                                <img src={searchIcon} id='' className='col-6 search-icon' alt="Icône rechercher" />
+                            </button>
                             
                         </div>
                         
@@ -140,8 +178,3 @@ const Nav = (props) => {
 }
 
 export default Nav;
-
-
-/* <button className="navbar-toggler col-4 ms-4" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span className="navbar-toggler-icon"></span>
-    </button> */

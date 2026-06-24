@@ -13,8 +13,8 @@ const Error = () => {
                 <Nav/>
             </header>
             <main>
-                <div className="page-content">
-                    <img id='errorPic' src={ErrorPic} alt="Error 404" />
+                <div className="page-content text-center">
+                    <img id='errorPic' className="mx-auto" src={ErrorPic} alt="Error 404" />
                     <p id="errorMessage" className="mx-auto">Oups, la page que vous avez demandée n'a pas été trouvée...</p>
                 </div>
                 

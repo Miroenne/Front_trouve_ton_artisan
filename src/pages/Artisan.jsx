@@ -8,12 +8,17 @@ import { useEffect, useState } from "react";
 const Artisan = () => {
 
     const location = useLocation();
-    const societyName = location.state.name;
+    const societyName = location.state?.name || "";
     const [society, setSociety] = useState(null);
     
     console.log(societyName);
     
     useEffect(() => {
+
+        if (!societyName) {
+            console.warn("Aucun nom d'artisan reçu dans location.state");
+            return;
+        }
 
         const FetchSociety = async () => {
             try{
@@ -33,7 +38,15 @@ const Artisan = () => {
 
         FetchSociety();
 
-    }, []);
+    }, [societyName]);
+
+    if (!societyName) {
+        return <p>Aucun artisan demandé.</p>;
+    }
+
+    if (!society) {
+        return <p>Chargement de l'artisan {societyName}…</p>;
+    }
 
     return(
         <div>

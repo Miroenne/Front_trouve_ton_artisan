@@ -44,7 +44,7 @@ const DisplaySociety = (props) => {
                     <p><strong>{props.speciality}</strong></p>
                 </div>
                 <div className="col-6">
-                    <p>{props.site}</p>
+                    <a href={props.site} target="_blank" rel="noreferrer">{props.site}</a>
                 </div>   
             </div>
             <div className="container row society-details">
