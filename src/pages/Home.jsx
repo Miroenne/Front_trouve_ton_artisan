@@ -60,6 +60,7 @@ const Home = () => {
                             <div className="col-md-6 col-lg-4" key={top3.id_Artisan}>
                                 <DisplayCard
                                     display="d-none"
+                                    societyId={top3.id_Artisan}
                                     societyName={top3.nom}
                                     note={top3.note}
                                     speciality={top3.nom_Spécialité}

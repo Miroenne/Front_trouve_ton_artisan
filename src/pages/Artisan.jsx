@@ -13,19 +13,19 @@ import { useEffect, useState } from "react";
 const Artisan = () => {
 
     const location = useLocation();
-    const societyName = location.state?.name || "";
+    const societyId = location.state?.id || "";
     const [society, setSociety] = useState(null);
     
     useEffect(() => {
 
-        if (!societyName) {
+        if (!societyId) {
             console.warn("Aucun nom d'artisan reçu dans location.state");
             return;
         }
 
         const FetchSociety = async () => {
             try{
-                const restSociety = await fetch('http://localhost:3000/societies/' + societyName);
+                const restSociety = await fetch('http://localhost:3000/societies/id/' + societyId);
                 const data = await restSociety.json()
                 if(Array.isArray(data)){
                     setSociety(data[0]);
@@ -34,20 +34,20 @@ const Artisan = () => {
                     setSociety([]);
                 }
             }catch(error){
-                console.error(`Erreur lors du chargement de l'artisan ` + societyName)
+                console.error(`Erreur lors du chargement de l'artisan ` + societyId)
             }
         }        
 
         FetchSociety();
 
-    }, [societyName]);
+    }, [societyId]);
 
-    if (!societyName) {
+    if (!societyId) {
         return <p>Aucun artisan demandé.</p>;
     }
 
     if (!society) {
-        return <p>Chargement de l'artisan {societyName}…</p>;
+        return <p>Chargement de l'artisan {societyId}…</p>;
     }
 
     return(

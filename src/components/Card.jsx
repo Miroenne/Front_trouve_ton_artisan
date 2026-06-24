@@ -26,7 +26,7 @@ const DisplayCard = (props) => {
 
     return (
         <div className="card mb-4" onClick={() => navigate('/Artisan', {state:{
-            name: props.societyName
+            id: props.societyId
         }})} >            
             <div className="card-body">
                 <div className={props.display}>

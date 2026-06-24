@@ -56,6 +56,7 @@ const Category = () => {
                             <div className="col-md-6 col-lg-4" key={artisan.id_Artisan}>
                                 <DisplayCard
                                     display="d-none"
+                                    societyId={artisan.id_Artisan}
                                     societyName={artisan.nom}
                                     note={artisan.note}
                                     speciality={artisan.nom_Spécialité}
