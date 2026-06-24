@@ -1,3 +1,8 @@
+/**
+ * Displays the regional footer links and address blocks.
+ *
+ * @returns {JSX.Element} Application footer.
+ */
 const Footer = () => {
 
     

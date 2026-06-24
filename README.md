@@ -1,70 +1,130 @@
-# Getting Started with Create React App
+# Trouve Ton Artisan - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Application React permettant de rechercher des artisans de la région Auvergne-Rhône-Alpes, de consulter leurs informations et de les contacter par email.
 
-## Available Scripts
+## Fonctionnalités
 
-In the project directory, you can run:
+- Affichage des trois artisans du mois sur la page d'accueil.
+- Navigation par catégories d'artisans.
+- Recherche d'un artisan par nom.
+- Page détail d'un artisan avec note, spécialité, ville, site web et présentation.
+- Formulaire de contact générant un lien `mailto:`.
+- Page d'erreur pour les liens de footer non implémentés.
 
-### `npm start`
+## Technologies
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React
+- React Router
+- Sass
+- Bootstrap classes
+- Create React App
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prérequis
 
-### `npm test`
+- Node.js
+- npm
+- API locale démarrée sur `http://localhost:3000`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Le frontend consomme directement l'API avec des appels `fetch` vers `http://localhost:3000`.
 
-### `npm run build`
+## Installation
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Lancement
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+npm start
+```
 
-### `npm run eject`
+Create React App démarre par défaut sur le port `3000`. Comme l'API utilise aussi ce port, CRA proposera généralement de lancer le frontend sur `3001`.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+URL frontend habituelle :
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```txt
+http://localhost:3001
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Scripts disponibles
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+Démarre l'application en mode développement.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm test
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Lance les tests en mode interactif.
 
-### Code Splitting
+```bash
+npm run build
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Génère une version de production dans le dossier `build`.
 
-### Analyzing the Bundle Size
+## Structure
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```txt
+src/
+├── assets/
+│   ├── fonts/
+│   └── img/
+├── components/
+│   ├── Card.jsx
+│   ├── Display_Artisan.jsx
+│   ├── Footer.jsx
+│   ├── Form.jsx
+│   └── Nav.jsx
+├── pages/
+│   ├── Artisan.jsx
+│   ├── Category.jsx
+│   ├── Error.jsx
+│   └── Home.jsx
+├── scss/
+├── utils/
+│   └── renderStars.js
+├── App.js
+└── index.js
+```
 
-### Making a Progressive Web App
+## Routes Frontend
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+| Route | Page | Description |
+| --- | --- | --- |
+| `/` | `Home` | Accueil et artisans du mois |
+| `/catégorie` | `Category` | Liste des artisans d'une catégorie |
+| `/artisan` | `Artisan` | Détail d'un artisan |
+| `/error` | `Error` | Page d'erreur |
 
-### Advanced Configuration
+Les routes `/catégorie` et `/artisan` dépendent actuellement de `location.state`, transmis via `NavLink` ou `navigate`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## API Consommée
 
-### Deployment
+| Méthode | Endpoint | Utilisation |
+| --- | --- | --- |
+| `GET` | `/top3/` | Artisans du mois |
+| `GET` | `/categories/` | Catégories du menu |
+| `GET` | `/societies/:nom` | Recherche par nom d'artisan |
+| `GET` | `/societies/categorized/:category` | Recherche par catégorie |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Documentation du Code
 
-### `npm run build` fails to minify
+Les composants et utilitaires principaux sont documentés avec des commentaires JSDoc :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- description du rôle du composant ou de la fonction ;
+- description des props ;
+- description des paramètres d'événements ;
+- valeur retournée.
+
+Ces commentaires sont utiles pour l'autocomplétion IDE, la maintenance et une future génération de documentation technique.
+
+## Points d'Attention Connus
+
+- `Nav.jsx` manipule directement le DOM avec `document.getElementById` et `document.querySelector`. En React, une gestion par `useState` et rendu conditionnel serait plus robuste.
+- Les appels API sont écrits en dur avec `http://localhost:3000`. Une variable d'environnement `REACT_APP_API_URL` éviterait de modifier le code entre développement et production.
+- Certaines routes dépendent de `location.state`. Un rechargement direct de `/artisan` ou `/catégorie` peut donc perdre les données nécessaires.

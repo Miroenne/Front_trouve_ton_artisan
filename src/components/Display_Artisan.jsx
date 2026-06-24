@@ -3,7 +3,19 @@ import halfStar from "../assets/img/half_star.svg";
 import emptyStar from "../assets/img/empty_star.svg";
 import renderStars from "../utils/renderStars";
 
-
+/**
+ * Displays the detailed information for one artisan.
+ *
+ * @param {object} props - Component properties.
+ * @param {string} props.picture - Artisan picture URL.
+ * @param {string} props.name - Artisan or society name.
+ * @param {number} props.note - Artisan rating displayed as stars.
+ * @param {string} props.city - Artisan city.
+ * @param {string} props.speciality - Artisan specialty.
+ * @param {string} props.site - Artisan website URL.
+ * @param {string} props.about - Artisan presentation text.
+ * @returns {JSX.Element} Artisan detail section.
+ */
 const DisplaySociety = (props) => {
     
     const rateNote = renderStars(props.note);

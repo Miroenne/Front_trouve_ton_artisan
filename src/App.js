@@ -4,6 +4,11 @@ import Category from './pages/Category'
 import Artisan from './pages/Artisan'
 import {Routes, Route} from "react-router-dom"
 
+/**
+ * Defines the client-side routes for the React application.
+ *
+ * @returns {JSX.Element} Application routes.
+ */
 function App() {
   return (
     <div className="app">

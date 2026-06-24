@@ -2,7 +2,11 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import ErrorPic from '../assets/img/error.jpg';
 
-
+/**
+ * Displays the fallback error page.
+ *
+ * @returns {JSX.Element} Error page.
+ */
 const Error = () => {
 
 

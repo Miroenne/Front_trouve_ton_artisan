@@ -1,3 +1,9 @@
+/**
+ * Converts a numeric rating into a five-star display model.
+ *
+ * @param {number} note - Rating to display, usually between 0 and 5.
+ * @returns {Array<'full'|'half'|'empty'>} Ordered list of star states.
+ */
 function renderStars(note){
         const maxStars = 5;
         const fullStars = Math.floor(note);

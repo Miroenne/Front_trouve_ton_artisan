@@ -6,6 +6,11 @@ import { useEffect, useState } from "react";
 
 
 
+/**
+ * Displays artisans filtered by the category received from router state.
+ *
+ * @returns {JSX.Element} Category results page.
+ */
 const Category = () => {
 
     const location = useLocation();

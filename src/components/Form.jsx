@@ -1,5 +1,12 @@
 import { useState } from "react";
 
+/**
+ * Displays a contact form that opens the user's email client with a prefilled message.
+ *
+ * @param {object} props - Component properties.
+ * @param {string} props.email - Recipient email address.
+ * @returns {JSX.Element} Contact form.
+ */
 const Form = (props) => {
 
     const [formData, setFormData] = useState({
@@ -9,6 +16,12 @@ const Form = (props) => {
         message: ""
     })
 
+    /**
+     * Updates the matching form field from the current input event.
+     *
+     * @param {React.ChangeEvent<HTMLInputElement|HTMLTextAreaElement>} e - Input change event.
+     * @returns {void}
+     */
     const handleChange = (e) => {
         const {name, value} = e.target;
         setFormData((prev) => ({
@@ -17,6 +30,12 @@ const Form = (props) => {
         }));
     };
 
+    /**
+     * Builds a mailto URL from the form data and redirects the browser to it.
+     *
+     * @param {React.FormEvent<HTMLFormElement>} e - Form submit event.
+     * @returns {void}
+     */
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -32,7 +51,6 @@ const Form = (props) => {
         );
 
         const mailtoLink = `mailto:${to}?subject=${subject}&body=${body}`;
-        console.log(mailtoLink)
         window.location.href = mailtoLink;
 
         setFormData({

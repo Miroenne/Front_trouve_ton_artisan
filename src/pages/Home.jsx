@@ -3,6 +3,11 @@ import Nav from "../components/Nav"
 import Footer from "../components/Footer"
 import {useEffect, useState} from 'react'
 
+/**
+ * Displays the homepage with usage instructions and featured artisans.
+ *
+ * @returns {JSX.Element} Homepage.
+ */
 const Home = () => {
     
     const [top3, setTop3] = useState([]);

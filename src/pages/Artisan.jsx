@@ -5,13 +5,16 @@ import Form from "../components/Form";
 import {useLocation} from "react-router-dom"
 import { useEffect, useState } from "react";
 
+/**
+ * Displays the detail page for the artisan selected through router state.
+ *
+ * @returns {JSX.Element} Artisan detail page or loading/empty state.
+ */
 const Artisan = () => {
 
     const location = useLocation();
     const societyName = location.state?.name || "";
     const [society, setSociety] = useState(null);
-    
-    console.log(societyName);
     
     useEffect(() => {
 
@@ -25,7 +28,6 @@ const Artisan = () => {
                 const restSociety = await fetch('http://localhost:3000/societies/' + societyName);
                 const data = await restSociety.json()
                 if(Array.isArray(data)){
-                    console.log('society data : ' + data[0])
                     setSociety(data[0]);
                 }else{
                     console.error(`L'API n'a pas retourné des données valides`, data);

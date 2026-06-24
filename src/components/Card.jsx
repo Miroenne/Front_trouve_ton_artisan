@@ -6,7 +6,19 @@ import renderStars from "../utils/renderStars";
 
 
 
-
+/**
+ * Displays a clickable artisan summary card.
+ *
+ * @param {object} props - Component properties.
+ * @param {string} props.societyName - Artisan or society name.
+ * @param {number} props.note - Artisan rating displayed as stars.
+ * @param {string} props.speciality - Artisan specialty.
+ * @param {string} props.city - Artisan city.
+ * @param {string} [props.display] - CSS class used to show or hide the optional picture container.
+ * @param {string} [props.pictures] - Optional picture URL.
+ * @param {string} [props.picturesAlt] - Alternative text for the optional picture.
+ * @returns {JSX.Element} Clickable card that navigates to the artisan detail page.
+ */
 const DisplayCard = (props) => {
   
     const navigate = useNavigate();
