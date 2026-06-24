@@ -17,7 +17,7 @@ const DisplaySociety = (props) => {
                 </div>
                 <div className="col-6 text-start">
                     <div className="container">
-                        <h1>{props.name}</h1>
+                        <h1 id="societyNameTitle">{props.name}</h1>
                     </div>                    
                     <div className="text-start">
                         {rateNote.map((type, i)=> {
@@ -36,14 +36,14 @@ const DisplaySociety = (props) => {
                     </div> 
                 </div>
             </div>
-            <div className="container row text-start society-details">
+            <div className="container row text-start justify-content-between society-details">
                 <div className="col-6">
                     <p><strong>{props.city}</strong></p>
                 </div>
                 <div className="col-6">
                     <p><strong>{props.speciality}</strong></p>
                 </div>
-                <div className="col-6">
+                <div className="col-12 mb-3">
                     <a href={props.site} target="_blank" rel="noreferrer">{props.site}</a>
                 </div>   
             </div>

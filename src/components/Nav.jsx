@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import logo from '../assets/img/Logo.png';
 import searchIcon from '../assets/img/search_icon.svg'
 import burgerMenuIcon from '../assets/img/burger-menu.svg'
@@ -46,11 +46,19 @@ const Nav = (props) => {
 
     const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
-    
+    const inputRef = useRef(null);
+
     function handleSearch() { 
+
+        if(!searchInput.trim()) return;
+
         console.log(searchInput)
         navigate('/Artisan', {state: {name: searchInput}})
-
+        setSearchInput('');
+        searchFormSm.classList.add('d-none');
+        if(inputRef.current){
+            inputRef.current.focus();
+        }
     }
 
     const handleSubmit = (e) => {
@@ -100,7 +108,7 @@ const Nav = (props) => {
                     <div id='searchFormLg'>
                         <form  className="d-flex nav-form" role="search" onSubmit={(e) => {
                             e.preventDefault();
-                            navigate("/Artisan", { state: { name: searchInput } });
+                            handleSearch();
                         }}>
                             <div className='search-container px-3 pb-1 container-fluid'>
                                 <div className='container-fluid p-0 m-0 row justify-content-between'>
@@ -146,7 +154,7 @@ const Nav = (props) => {
             <div id='searchFormSm' className='d-none'>
                 <form  className="d-flex nav-form" role="search" onSubmit={(e) => {
                     e.preventDefault();
-                    navigate("/Artisan", { state: { name: searchInput } });
+                    handleSearch();
                 }}>
                     <div className='search-container px-3 pb-1 container-fluid'>
                         <div className='container-fluid p-0 m-0 row justify-content-between'>
