@@ -17,7 +17,7 @@ const Home = () => {
     useEffect(() => {
         const fetchTop3 = async () => {
             try {
-                const resTop3 = await fetch('${API_URL}/top3/');                
+                const resTop3 = await fetch(`${API_URL}/top3/`);                
                 const data = await resTop3.json();                
                 if (Array.isArray(data)) {                    
                     setTop3(data);
