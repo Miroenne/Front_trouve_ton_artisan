@@ -48,7 +48,7 @@ const Category = () => {
                 <Nav onDisplay={setPageContent}/>
             </header>
             <main>
-                <div id="category" className="page-content">
+                <div id="category" className={pageContent ? "container-fluid mt-5 p-0 page-content" : "container-fluid mt-5 p-0 page-content d-none" }>
                     <div className="container-fluid">
                         <h1 className="text-start">{categoryName}</h1>
                         <h2 className="text-start text-decoration-underline">Ci-dessous la liste des artisans correpondants :</h2>

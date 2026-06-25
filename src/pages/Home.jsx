@@ -43,7 +43,7 @@ const Home = () => {
             </header>
 
             <main className="px-25">   
-                <div className="page-content">
+                <div className={pageContent ? "container-fluid mt-5 p-0 page-content" : "container-fluid mt-5 p-0 page-content d-none" }>
                     <div  className="w-50 mt-50 container justify-self-center text-center">
                         <h1 className="">Trouve ton artisan en Auvergne-Rhône-Alpes</h1>
                         <h2>Comment trouver mon artisan?</h2>
