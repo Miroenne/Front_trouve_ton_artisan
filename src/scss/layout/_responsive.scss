@@ -1,0 +1,131 @@
+@media(max-width: 450px){
+    main{
+        font-size: 1rem;  
+
+    }
+    
+     #errorPic {
+        width: 250px;
+        height: 250px;
+    }
+
+    #errorMessage{
+        font-size: 1.5rem;
+        width: 90%;
+    }
+
+    .rate-big-star{        
+        width: 16px;
+        height: 16px;
+        
+    }
+
+    #societyNameTitle{
+        font-size: 1.8em;
+    }
+
+}
+
+@media(min-width:450px) and (max-width: 768px){
+    .rate-big-star{
+        width: 25px;
+        height: 25px;
+        margin: 0 5px;
+    }
+    #errorPic {
+        width: 350px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    
+
+    #societyPic{
+        width: 150px;
+        height: 150px;
+        
+
+    }
+
+    #navBarLogo {
+    width: 150px;
+    height: 75px;
+    object-fit: cover;
+}
+
+#searchFormSm {
+    position: absolute;
+    top: 100px;
+    left: -1px;
+    height: 50px;
+    width: 100%;
+    z-index: 1;
+    padding: 10px 15px;
+}
+    
+}
+
+@media(min-width: 768px) and (max-width:1400px){
+
+    .rate-big-star{
+        width: 35px;
+        height: 35px;
+        margin: 0 5px;
+    }
+    #societyPic{
+        width: 200px;
+        height: 200px;
+    }
+}
+
+@media (max-width: 992px) {
+    #searchFormLg {
+        display: none;
+    }
+
+    #form{
+        border-top: 3px solid var(--deep-blue);
+        width: 95%;
+    }
+
+    #contactForm{
+        input, textarea, label{  
+        margin-left: auto;
+        margin-right: auto;        
+        }
+    }
+
+    #categoriesMenuSm{
+        height: 84vh;        
+        position: absolute;
+        top: 87px;
+        background-color: white;
+        width: 100%;
+    }
+}
+
+@media (min-width: 993px) {
+    
+        
+    #searchFormSm,
+    #smBtnContainer {
+        display: none;
+    }
+
+    #societySeparate{
+        transform: rotate(90deg);
+        width: 650px;
+        position: relative;
+        top: -350%;
+        left: 27%;
+    }
+
+    #form{
+        border-left: 4px solid var(--deep-blue);
+    }
+
+    #categoriesMenuSm{
+        display: none;
+    }
+}
