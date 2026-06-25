@@ -18,7 +18,7 @@ const Nav = ({onDisplay}) => {
 
     const [searchFormSm, setSearchFormSm] = useState(false);
     const [catMenu, setCatMenu] = useState(false);  
-    
+    const API_URL = process.env.API_URL;
     const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
     const inputRef = useRef(null);
@@ -34,7 +34,7 @@ const Nav = ({onDisplay}) => {
 
         try{
             
-            const searchSociety = await fetch('http://localhost:3000/societies/' + searchInput);
+            const searchSociety = await fetch('${API_URL}/societies/' + searchInput);
             const data = await searchSociety.json();
             
             navigate('/artisans/' + data[0].id_Artisan)
@@ -81,7 +81,7 @@ const Nav = ({onDisplay}) => {
         e.preventDefault();
 
         try{
-            const searchSociety = await fetch('http://localhost:3000/societies/' + searchInput);
+            const searchSociety = await fetch('${API_URL}/societies/' + searchInput);
             const data = await searchSociety.json();
             console.log("Fetched Data : " + data)
             if(e.key === 'Enter'){
@@ -103,7 +103,7 @@ const Nav = ({onDisplay}) => {
         useEffect(() => {
             const fetchCategories = async () => {
                 try {
-                    const resCategories = await fetch('http://localhost:3000/categories/');
+                    const resCategories = await fetch('${API_URL}/categories/');
                     const data = await resCategories.json();
                     if (Array.isArray(data)) {
                         setCategories(data);

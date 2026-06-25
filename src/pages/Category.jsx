@@ -15,12 +15,13 @@ const Category = () => {
 
     const [pageContent, setPageContent] = useState(true) ; 
     const {categoryName} = useParams();
+    const API_URL = process.env.API_URL;
     const [category, setCategory] = useState([]);   
 
     useEffect(() => {
         const fecthCategory = async () => {
             try{
-                const resCategory = await fetch('http://localhost:3000/societies/categorized/' + categoryName);
+                const resCategory = await fetch('${API_URL}/societies/categorized/' + categoryName);
                 const data = await resCategory.json();
                 if(Array.isArray(data)){
                     setCategory(data);

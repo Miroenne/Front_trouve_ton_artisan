@@ -12,11 +12,12 @@ const Home = () => {
     
     const [pageContent, setPageContent] = useState(true) ; 
     const [top3, setTop3] = useState([]);
+    const API_URL = process.env.API_URL;
 
     useEffect(() => {
         const fetchTop3 = async () => {
             try {
-                const resTop3 = await fetch('http://localhost:3000/top3/');                
+                const resTop3 = await fetch('${API_URL}/top3/');                
                 const data = await resTop3.json();                
                 if (Array.isArray(data)) {                    
                     setTop3(data);
