@@ -194,7 +194,7 @@ const Nav = ({onDisplay}) => {
                     </div>                                          
                 </form>
             </div>
-            <div className={catMenu ? 'mt-3' : 'mt-3 d-none'} id="categoriesMenuSm">
+            <div className={catMenu ? 'mt-5' : 'mt-5 d-none'} id="categoriesMenuSm">
                 <ul className="text-center navbar-nav mb-2 mb-lg-0">
                     {categories.map((catégorie) => (
                         <li className="nav-item mt-4 fs-4" key={catégorie.id_Catégorie}>
