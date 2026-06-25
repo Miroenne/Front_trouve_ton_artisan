@@ -127,7 +127,7 @@ const Nav = ({onDisplay}) => {
     return(
         <nav className="border border-1 border-bottom shadow navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
-                <a className="navbar-brand"  href="/"><img id='navBarLogo' src={logo} alt="logo" /></a>
+                <a className="navbar-brand"  href="/"><img id='navBarLogo' src={logo} alt="Trouve ton artisan" /></a>
                 <div>
                     
                     <div id='searchFormLg'>
