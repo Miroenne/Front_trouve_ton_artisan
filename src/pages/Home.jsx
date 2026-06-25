@@ -12,7 +12,7 @@ const Home = () => {
     
     const [pageContent, setPageContent] = useState(true) ; 
     const [top3, setTop3] = useState([]);
-    const API_URL = process.env.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
 
     useEffect(() => {
         const fetchTop3 = async () => {

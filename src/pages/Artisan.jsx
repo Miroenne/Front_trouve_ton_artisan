@@ -14,7 +14,7 @@ const Artisan = () => {
 
     const [pageContent, setPageContent] = useState(true) ; 
     const {id} = useParams();
-    const API_URL = process.env.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
     const [society, setSociety] = useState(null);
     console.log("L'ID est le : " + id)
     useEffect(() => {
