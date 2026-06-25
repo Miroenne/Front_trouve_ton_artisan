@@ -18,7 +18,7 @@ const Nav = ({onDisplay}) => {
 
     const [searchFormSm, setSearchFormSm] = useState(false);
     const [catMenu, setCatMenu] = useState(false);  
-    const API_URL = process.env.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
     const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
     const inputRef = useRef(null);

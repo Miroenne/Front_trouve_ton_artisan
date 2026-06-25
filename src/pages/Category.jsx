@@ -15,7 +15,7 @@ const Category = () => {
 
     const [pageContent, setPageContent] = useState(true) ; 
     const {categoryName} = useParams();
-    const API_URL = process.env.API_URL;
+    const API_URL = process.env.REACT_APP_API_URL;
     const [category, setCategory] = useState([]);   
 
     useEffect(() => {
