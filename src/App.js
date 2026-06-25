@@ -5,7 +5,10 @@ import Artisan from './pages/Artisan'
 import {Routes, Route} from "react-router-dom"
 
 /**
- * Defines the client-side routes for the React application.
+ * Defines the public client-side routes for the React application.
+ *
+ * Category and artisan detail pages use URL parameters so they can be opened
+ * directly, shared, and indexed more easily than state-only routes.
  *
  * @returns {JSX.Element} Application routes.
  */
@@ -15,8 +18,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />}/>
         <Route path='/error' element={<Error />}/>
-        <Route path='/catégorie' element={<Category />}/>
-        <Route path='/artisan' element={<Artisan />}/>
+        <Route path='/catégories/:categoryName' element={<Category />}/>
+        <Route path='/artisans/:id' element={<Artisan />}/>
       </Routes>
     </div>
   );

@@ -12,12 +12,14 @@ h4,
 h5,
 h6 {
     color: var(--deep-blue) !important;
-    font-weight: bold;
+    font-weight: normal;
 }
 
 h2 {
     margin-bottom: 45px;
 }
+
+
 
 footer {
     background-color: var(--light-blue);
@@ -36,7 +38,9 @@ main {
 }
 
 strong{
-    font-weight: normal;
+    font-weight: bold;
+    font-size: 2rem;
+    color: var(--deep-blue);
 }
 
 input{
@@ -89,7 +93,11 @@ input{
     width: 95%;
 }
 
-
+.card-subtitle{
+    color: black !important;
+    font-size:1.2rem;
+    font-weight: normal;
+}
 
 .mt-50 {
     margin-top: 50px;

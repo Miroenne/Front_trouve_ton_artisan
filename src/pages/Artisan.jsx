@@ -2,61 +2,59 @@ import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import DisplaySociety from "../components/Display_Artisan";
 import Form from "../components/Form";
-import {useLocation} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import { useEffect, useState } from "react";
 
 /**
- * Displays the detail page for the artisan selected through router state.
+ * Displays the detail page for the artisan id received from the URL.
  *
  * @returns {JSX.Element} Artisan detail page or loading/empty state.
  */
 const Artisan = () => {
 
-    const location = useLocation();
-    const societyId = location.state?.id || "";
+    const [pageContent, setPageContent] = useState(true) ; 
+    const {id} = useParams();
     const [society, setSociety] = useState(null);
-    
+    console.log("L'ID est le : " + id)
     useEffect(() => {
 
-        if (!societyId) {
-            console.warn("Aucun nom d'artisan reçu dans location.state");
+        if (!id) {
+            console.warn("Aucun identifiant d'artisan reçu dans l'URL");
             return;
         }
 
         const FetchSociety = async () => {
             try{
-                const restSociety = await fetch('http://localhost:3000/societies/id/' + societyId);
+                const restSociety = await fetch('http://localhost:3000/societies/id/' + id);
                 const data = await restSociety.json()
-                if(Array.isArray(data)){
-                    setSociety(data[0]);
-                }else{
-                    console.error(`L'API n'a pas retourné des données valides`, data);
-                    setSociety([]);
-                }
+                setSociety(data);
+                
             }catch(error){
-                console.error(`Erreur lors du chargement de l'artisan ` + societyId)
+                console.error(`Erreur lors du chargement de l'artisan ` + id)
             }
         }        
 
         FetchSociety();
 
-    }, [societyId]);
+    }, [id]);
 
-    if (!societyId) {
+    if (!id) {
         return <p>Aucun artisan demandé.</p>;
     }
 
     if (!society) {
-        return <p>Chargement de l'artisan {societyId}…</p>;
+        return <p>Chargement de l'artisan {id}…</p>;
     }
+
+    
 
     return(
         <div>
             <header>
-                <Nav />
+                <Nav onDisplay={setPageContent} />
             </header>
             <main>    
-                <div className="container-fluid mt-5 p-0 page-content">
+                <div className={pageContent ? "container-fluid mt-5 p-0 page-content" : "container-fluid mt-5 p-0 page-content d-none" }>
                     <div className="container-fluid row p-0 m-0">
                         <div className="col-lg-6">
                             {society && 

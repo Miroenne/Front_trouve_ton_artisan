@@ -4,7 +4,7 @@ import emptyStar from "../assets/img/empty_star.svg";
 import renderStars from "../utils/renderStars";
 
 /**
- * Displays the detailed information for one artisan.
+ * Displays the detailed information for one artisan profile.
  *
  * @param {object} props - Component properties.
  * @param {string} props.picture - Artisan picture URL.
@@ -30,8 +30,8 @@ const DisplaySociety = (props) => {
                 <div className="col-6 text-start">
                     <div className="container">
                         <h1 id="societyNameTitle">{props.name}</h1>
-                    </div>                    
-                    <div className="text-start">
+                    </div>                
+                                        <div className="text-start" title={"Note de l'artisan : " + props.note}>
                         {rateNote.map((type, i)=> {
                             if(type === "full"){
                                 return <img className="rate-big-star" key={i} src={fullStar} alt="Full star" />;
@@ -45,18 +45,18 @@ const DisplaySociety = (props) => {
 
                             return null;
                         })}
-                    </div> 
+                    </div>
                 </div>
             </div>
             <div className="container row text-start justify-content-between society-details">
                 <div className="col-6">
-                    <p><strong>{props.city}</strong></p>
+                    <h2 className="fw-normal">{props.city}</h2>
                 </div>
                 <div className="col-6">
-                    <p><strong>{props.speciality}</strong></p>
+                    <h2 className="fw-normal">{props.speciality}</h2>
                 </div>
                 <div className="col-12 mb-3">
-                    <a href={props.site} target="_blank" rel="noreferrer">{props.site}</a>
+                    <h3 className="fw-normal fs-4"><a href={props.site} target="_blank" rel="noreferrer">{props.site}</a></h3>
                 </div>   
             </div>
             <div className="container row society-details">

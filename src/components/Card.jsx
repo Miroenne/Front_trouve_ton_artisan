@@ -1,15 +1,16 @@
 import fullStar from "../assets/img/full_star.svg";
 import halfStar from "../assets/img/half_star.svg";
 import emptyStar from "../assets/img/empty_star.svg";
-import { useNavigate } from "react-router-dom";
+import { Link} from "react-router-dom";
 import renderStars from "../utils/renderStars";
 
 
 
 /**
- * Displays a clickable artisan summary card.
+ * Displays an artisan summary card as a real navigation link.
  *
  * @param {object} props - Component properties.
+ * @param {number|string} props.societyId - Artisan id used to build the detail page URL.
  * @param {string} props.societyName - Artisan or society name.
  * @param {number} props.note - Artisan rating displayed as stars.
  * @param {string} props.speciality - Artisan specialty.
@@ -17,26 +18,29 @@ import renderStars from "../utils/renderStars";
  * @param {string} [props.display] - CSS class used to show or hide the optional picture container.
  * @param {string} [props.pictures] - Optional picture URL.
  * @param {string} [props.picturesAlt] - Alternative text for the optional picture.
- * @returns {JSX.Element} Clickable card that navigates to the artisan detail page.
+ * @returns {JSX.Element} Linked card that navigates to the artisan detail page.
  */
 const DisplayCard = (props) => {
   
-    const navigate = useNavigate();
     const rateNote = renderStars(props.note);
-
+    
     return (
-        <div className="card mb-4" onClick={() => navigate('/Artisan', {state:{
-            id: props.societyId
-        }})} >            
+
+        <Link className="card mb-4 text-decoration-none text-reset"
+            to={`/artisans/${props.societyId}`}
+        >                   
             <div className="card-body">
                 <div className={props.display}>
                     <img className='mt-5' src={props.pictures} alt={props.picturesAlt} />
                 </div>
                 <div className="row text-start mb-2">                    
-                    <h5 className="card-title" >{props.societyName}</h5>
+                    <h3 className="card-title" >{props.societyName}</h3>
                 </div>
                 <div className="row justify-content-between">
-                    <p className='card-text col-6 text-start'>{props.speciality}</p>
+                    <div className="col-6 text-start align-content-center">
+                        <h4 className='card-subtitle'>{props.speciality}</h4>
+                    </div>
+                    
                     <div className="col-6 text-end">
                         {rateNote.map((type, i)=> {
                             if(type === "full"){
@@ -52,12 +56,13 @@ const DisplayCard = (props) => {
                             return null;
                         })}
                     </div>                
-                    
-                    <p className='card-text col-6 text-start'>{props.city}</p>
-                </div>
-                
-            </div>
-        </div>
+                    <div className="col-6 text-start mt-2 align-content-center">
+                        <h4 className='card-subtitle'>{props.city}</h4>
+                    </div>                    
+                </div>                
+            </div>            
+        </Link>
+        
     )
 }
 

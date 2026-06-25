@@ -4,98 +4,98 @@ import searchIcon from '../assets/img/search_icon.svg'
 import burgerMenuIcon from '../assets/img/burger-menu.svg'
 import { NavLink, useNavigate } from 'react-router-dom';
 
-const searchFormSm = document.getElementById('searchFormSm');
-const catMenu = document.getElementById('categoriesMenuSm') ;  
-const pageContent = document.querySelector('.page-content'); 
-
-/**
- * Toggles the small-screen search form and restores the page content when needed.
- *
- * @returns {void}
- */
-function displaySearchForm() {     
-    searchFormSm.classList.toggle('d-none');
-
-    if(!catMenu.classList.contains('d-none')){
-        catMenu.classList.add('d-none');
-    }
-    if(pageContent.classList.contains('d-none')){
-        pageContent.classList.remove('d-none')
-    }
-}
-
-/**
- * Toggles the small-screen category menu and hides the page content below it.
- *
- * @returns {void}
- */
-function displayCategoriesMenu() {     
-    
-    catMenu.classList.toggle('d-none');   
-    pageContent.classList.toggle('d-none')
-
-    if(!searchFormSm.classList.contains('d-none')){
-        searchFormSm.classList.add('d-none')
-    }
-}
-
-/**
- * Restores page content display when the viewport switches back to desktop width.
- *
- * @returns {void}
- */
-function resetContentDisplay () {    
-
-    if(window.innerWidth > 993){
-        const pageContent = document.querySelector('.page-content')        
-        pageContent.classList.remove('d-none')
-    }
-}
-
-window.addEventListener('resize', resetContentDisplay);
-
-
-
 /**
  * Displays the main navigation, category links, and search controls.
  *
+ * The search form queries artisans by name, then redirects to the detail route
+ * with the matching artisan id.
+ *
+ * @param {object} props - Component properties.
+ * @param {React.Dispatch<React.SetStateAction<boolean>>} [props.onDisplay] - Updates page content visibility on small screens.
  * @returns {JSX.Element} Navigation bar.
  */
-const Nav = (props) => {
+const Nav = ({onDisplay}) => {
 
+    const [searchFormSm, setSearchFormSm] = useState(false);
+    const [catMenu, setCatMenu] = useState(false);  
+    
     const [searchInput, setSearchInput] = useState("");
     const navigate = useNavigate();
     const inputRef = useRef(null);
 
     /**
-     * Navigates to the artisan detail page using the current search input.
+     * Searches an artisan by name and navigates to the matching detail page.
      *
-     * @returns {void}
+     * @returns {Promise<void>} Resolves after the search request and navigation handling.
      */
-    function handleSearch() { 
-
+    const handleSearch = async () => { 
+        
         if(!searchInput.trim()) return;
 
-        navigate('/Artisan', {state: {name: searchInput}})
+        try{
+            
+            const searchSociety = await fetch('http://localhost:3000/societies/' + searchInput);
+            const data = await searchSociety.json();
+            
+            navigate('/artisans/' + data[0].id_Artisan)
+            
+        }catch(error){
+            console.error('Erreur lors du chargement de la société')
+        }
         setSearchInput('');
-        searchFormSm.classList.add('d-none');
+        setSearchFormSm(false);
         if(inputRef.current){
             inputRef.current.focus();
         }
     }
 
     /**
+     * Toggles the small-screen search form and restores the page content.
+     *
+     * @returns {void}
+     */
+    function displaySearchForm() {     
+    setSearchFormSm(prev => !prev);
+    setCatMenu(false);
+    onDisplay(true);
+    }
+
+    /**
+     * Toggles the small-screen category menu and page content visibility.
+     *
+     * @returns {void}
+    */
+    function displayCategoriesMenu() {     
+        setCatMenu(prev => !prev);
+        setSearchFormSm(false);
+        onDisplay(prev => !prev);        
+    } 
+
+    /**
      * Handles keyboard submission for the search form.
      *
      * @param {React.KeyboardEvent<HTMLInputElement>} e - Keyboard event.
-     * @returns {void}
+     * @returns {Promise<void>} Resolves after the search request and navigation handling.
      */
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        if(e.key === 'Enter'){
-            navigate('/Artisan', {state: {name: searchInput}})
+
+        try{
+            const searchSociety = await fetch('http://localhost:3000/societies/' + searchInput);
+            const data = await searchSociety.json();
+            console.log("Fetched Data : " + data)
+            if(e.key === 'Enter'){
+                navigate('/Artisan/id/' + data.id_Artisan)
+            }
+
+        }catch(error){
+            console.error('Erreur lors du chargement de la société')
         }
-        
+        setSearchInput('');
+        searchFormSm.classList.add('d-none');
+        if(inputRef.current){
+            inputRef.current.focus();
+        }
     }
 
     const [categories, setCategories] = useState([]);
@@ -152,8 +152,8 @@ const Nav = (props) => {
                     <div className="collapse mt-3 navbar-collapse justify-content-end" id="navbarSupportedContent">
                         <ul className="navbar-nav mb-2 mb-lg-0" id="categoriesMenu">
                             {categories.map((catégorie) => (
-                                <li className="nav-item">
-                                    <NavLink className="link" to={'/catégorie'} 
+                                <li className="nav-item" key={catégorie.id_Catégorie}>
+                                    <NavLink className="link" to={`/catégories/${catégorie.nom_Catégorie}`} 
                                     state={{category: catégorie.nom_Catégorie}}>
                                         {catégorie.nom_Catégorie}
                                     </NavLink>
@@ -164,19 +164,19 @@ const Nav = (props) => {
                 </div>
                 <div className='row justify-content-end me-0' id='smBtnContainer'>
                     <div id='searchFormBtnContainer' className='col-4 me-3'>                          
-                        <button type="submit" className='mt-2 p-0 form-btn' id='displaySmSearchFormBtn' onClick={displaySearchForm}>
+                        <button type="button" className='mt-2 p-0 form-btn' id='displaySmSearchFormBtn' onClick={displaySearchForm}>
                             <img src={searchIcon} className=' search-icon' alt="Icône rechercher" />
                         </button>                                                 
                     </div>
                     <div id='categoriesMenuBtnContainer' className='col-4'>                          
-                        <button type="submit" className='mt-2 p-0 form-btn' id='categoriesMenuBtn' onClick={displayCategoriesMenu}>
+                        <button type="button" className='mt-2 p-0 form-btn' id='categoriesMenuBtn' onClick={displayCategoriesMenu}>
                             <img src={burgerMenuIcon} className=' burger-icon' alt="Burger menu icon" />
                         </button>                                                 
                     </div>
                 </div>
                               
             </div>
-            <div id='searchFormSm' className='d-none'>
+            <div id='searchFormSm' className={searchFormSm ? '' : 'd-none'}>
                 <form  className="d-flex nav-form" role="search" onSubmit={(e) => {
                     e.preventDefault();
                     handleSearch();
@@ -194,11 +194,11 @@ const Nav = (props) => {
                     </div>                                          
                 </form>
             </div>
-            <div className=" mt-3 d-none" id="categoriesMenuSm">
+            <div className={catMenu ? 'mt-3' : 'mt-3 d-none'} id="categoriesMenuSm">
                 <ul className="text-center navbar-nav mb-2 mb-lg-0">
                     {categories.map((catégorie) => (
-                        <li className="nav-item mt-4 fs-4">
-                            <NavLink className="link" to={'/catégorie'} 
+                        <li className="nav-item mt-4 fs-4" key={catégorie.id_Catégorie}>
+                            <NavLink className="link" to={`/catégories/${catégorie.nom_Catégorie}`} 
                             state={{category: catégorie.nom_Catégorie}}>
                                 {catégorie.nom_Catégorie}
                             </NavLink>

@@ -1,27 +1,26 @@
 import Nav from "../components/Nav";
 import Footer from "../components/Footer";
 import DisplayCard from "../components/Card";
-import {useLocation} from "react-router-dom"
+import {useParams} from "react-router-dom"
 import { useEffect, useState } from "react";
 
 
 
 /**
- * Displays artisans filtered by the category received from router state.
+ * Displays artisans filtered by the category name received from the URL.
  *
  * @returns {JSX.Element} Category results page.
  */
 const Category = () => {
 
-    const location = useLocation();
-    const categorie = location.state.category;
-    const [category, setCategory] = useState([]);    
-    const [refresh, setRefresh] = useState(categorie);
+    const [pageContent, setPageContent] = useState(true) ; 
+    const {categoryName} = useParams();
+    const [category, setCategory] = useState([]);   
 
     useEffect(() => {
         const fecthCategory = async () => {
             try{
-                const resCategory = await fetch('http://localhost:3000/societies/categorized/' + categorie);
+                const resCategory = await fetch('http://localhost:3000/societies/categorized/' + categoryName);
                 const data = await resCategory.json();
                 if(Array.isArray(data)){
                     setCategory(data);
@@ -30,14 +29,14 @@ const Category = () => {
                     setCategory([]);
                 }
             }catch(error){
-                console.error('Erreur lors du chargement des artisans de la catégorie ' + categorie);
+                console.error('Erreur lors du chargement des artisans de la catégorie ' + categoryName);
                 setCategory([]);
             }
         }
 
         fecthCategory();
 
-    }, [categorie]);
+    }, [categoryName]);
    
 
     
@@ -45,12 +44,13 @@ const Category = () => {
     return(
         <div>
             <header>
-                <Nav />
+                <Nav onDisplay={setPageContent}/>
             </header>
             <main>
                 <div id="category" className="page-content">
                     <div className="container-fluid">
-                        <h1 className="text-start ms-4">{categorie}</h1>
+                        <h1 className="text-start">{categoryName}</h1>
+                        <h2 className="text-start text-decoration-underline">Ci-dessous la liste des artisans correpondants :</h2>
                         <div className="row justify-content-evenly">
                             {category.map((artisan) => (
                             <div className="col-md-6 col-lg-4" key={artisan.id_Artisan}>

@@ -64,8 +64,9 @@ const Form = (props) => {
     return(
         <div className="text-start h-100">
             <div>
-                <h2 className="text-center mt-4" id="formTitle">Formulaire de contact
-            </ h2>
+                <h2 className="text-center mt-4" id="formTitle">
+                    Formulaire de contact
+                </h2>
             </div>
             <form id="contactForm" onSubmit={handleSubmit} autoComplete="on">
                 <div className="">

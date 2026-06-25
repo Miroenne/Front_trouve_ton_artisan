@@ -6,7 +6,7 @@ Application React permettant de rechercher des artisans de la région Auvergne-R
 
 - Affichage des trois artisans du mois sur la page d'accueil.
 - Navigation par catégories d'artisans.
-- Recherche d'un artisan par nom.
+- Recherche d'un artisan par nom, puis redirection vers sa fiche par identifiant.
 - Page détail d'un artisan avec note, spécialité, ville, site web et présentation.
 - Formulaire de contact générant un lien `mailto:`.
 - Page d'erreur pour les liens de footer non implémentés.
@@ -97,11 +97,11 @@ src/
 | Route | Page | Description |
 | --- | --- | --- |
 | `/` | `Home` | Accueil et artisans du mois |
-| `/catégorie` | `Category` | Liste des artisans d'une catégorie |
-| `/artisan` | `Artisan` | Détail d'un artisan |
+| `/catégories/:categoryName` | `Category` | Liste des artisans d'une catégorie |
+| `/artisans/:id` | `Artisan` | Détail d'un artisan |
 | `/error` | `Error` | Page d'erreur |
 
-Les routes `/catégorie` et `/artisan` dépendent actuellement de `location.state`, transmis via `NavLink` ou `navigate`.
+Les routes de catégorie et de détail artisan utilisent des paramètres d'URL avec `useParams`. Cela permet d'ouvrir directement une page, de partager son URL et d'améliorer son indexation.
 
 ## API Consommée
 
@@ -109,7 +109,8 @@ Les routes `/catégorie` et `/artisan` dépendent actuellement de `location.stat
 | --- | --- | --- |
 | `GET` | `/top3/` | Artisans du mois |
 | `GET` | `/categories/` | Catégories du menu |
-| `GET` | `/societies/:nom` | Recherche par nom d'artisan |
+| `GET` | `/societies/:nom` | Recherche par nom d'artisan, retourne une liste de résultats |
+| `GET` | `/societies/id/:id` | Détail d'un artisan par identifiant |
 | `GET` | `/societies/categorized/:category` | Recherche par catégorie |
 
 ## Documentation du Code
@@ -125,6 +126,6 @@ Ces commentaires sont utiles pour l'autocomplétion IDE, la maintenance et une f
 
 ## Points d'Attention Connus
 
-- `Nav.jsx` manipule directement le DOM avec `document.getElementById` et `document.querySelector`. En React, une gestion par `useState` et rendu conditionnel serait plus robuste.
 - Les appels API sont écrits en dur avec `http://localhost:3000`. Une variable d'environnement `REACT_APP_API_URL` éviterait de modifier le code entre développement et production.
-- Certaines routes dépendent de `location.state`. Un rechargement direct de `/artisan` ou `/catégorie` peut donc perdre les données nécessaires.
+- La recherche de la navbar prend le premier résultat retourné par `/societies/:nom`. Si plusieurs artisans correspondent, une page de résultats dédiée serait plus précise.
+- Certaines icônes d'étoiles restent exposées avec des textes alternatifs répétitifs. Pour une meilleure accessibilité, une note textuelle unique et des étoiles décoratives seraient préférables.
