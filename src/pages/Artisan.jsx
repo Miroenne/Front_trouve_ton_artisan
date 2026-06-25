@@ -14,6 +14,7 @@ const Artisan = () => {
 
     const [pageContent, setPageContent] = useState(true) ; 
     const {id} = useParams();
+    const API_URL = process.env.API_URL;
     const [society, setSociety] = useState(null);
     console.log("L'ID est le : " + id)
     useEffect(() => {
@@ -25,7 +26,7 @@ const Artisan = () => {
 
         const FetchSociety = async () => {
             try{
-                const restSociety = await fetch('http://localhost:3000/societies/id/' + id);
+                const restSociety = await fetch('${API_URL}/societies/id/' + id);
                 const data = await restSociety.json()
                 setSociety(data);
                 
