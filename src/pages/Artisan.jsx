@@ -26,7 +26,7 @@ const Artisan = () => {
 
         const FetchSociety = async () => {
             try{
-                const restSociety = await fetch('${API_URL}/societies/id/' + id);
+                const restSociety = await fetch(`${API_URL}/societies/id/` + id);
                 const data = await restSociety.json()
                 setSociety(data);
                 

@@ -21,7 +21,7 @@ const Category = () => {
     useEffect(() => {
         const fecthCategory = async () => {
             try{
-                const resCategory = await fetch('${API_URL}/societies/categorized/' + categoryName);
+                const resCategory = await fetch(`${API_URL}/societies/categorized/` + categoryName);
                 const data = await resCategory.json();
                 if(Array.isArray(data)){
                     setCategory(data);
