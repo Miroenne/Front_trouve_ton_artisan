@@ -82,8 +82,7 @@ const Nav = ({onDisplay}) => {
 
         try{
             const searchSociety = await fetch(`${API_URL}/societies/` + searchInput);
-            const data = await searchSociety.json();
-            console.log("Fetched Data : " + data)
+            const data = await searchSociety.json();            
             if(e.key === 'Enter'){
                 navigate('/Artisan/id/' + data.id_Artisan)
             }

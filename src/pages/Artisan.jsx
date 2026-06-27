@@ -15,8 +15,7 @@ const Artisan = () => {
     const [pageContent, setPageContent] = useState(true) ; 
     const {id} = useParams();
     const API_URL = process.env.REACT_APP_API_URL;
-    const [society, setSociety] = useState(null);
-    console.log("L'ID est le : " + id)
+    const [society, setSociety] = useState(null);   
     useEffect(() => {
 
         if (!id) {
@@ -57,7 +56,7 @@ const Artisan = () => {
             <main>    
                 <div className={pageContent ? "container-fluid mt-5 p-0 page-content" : "container-fluid mt-5 p-0 page-content d-none" }>
                     <div className="container-fluid row p-0 m-0">
-                        <div className="col-lg-6">
+                        <section id='societyDetails' className="col-lg-6">
                             {society && 
                                 ( 
                                     <DisplaySociety 
@@ -71,21 +70,16 @@ const Artisan = () => {
                                     />
                                 )
                             }
-                        </div>
-                        
-                        <div className="society-container col-lg-6 mx-auto text-start" id='form'>
+                        </section>
+                        <section id='societyContactForm' className="society-container col-lg-6 mx-auto text-start">
                            { society && (<Form email={society.email}/>)}
-                        </div>
-                        
+                        </section>
                     </div>       
-                </div>
-                
-                
+                </div>     
             </main>
             <footer>
                 <Footer />
             </footer>
-            
         </div>
     )
 }

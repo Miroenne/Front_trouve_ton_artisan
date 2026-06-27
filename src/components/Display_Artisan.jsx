@@ -23,7 +23,7 @@ const DisplaySociety = (props) => {
    
     return(
         <div className="container-fluid p-0">
-            <div className="container mx-0 p-0 row mb-5">
+            <section id='societyPresentation' className="container mx-0 p-0 row mb-5">
                 <div className="col-6 text-start">
                     <img id="societyPic" src={props.picture} alt={"photo " + props.name} />
                 </div>
@@ -47,8 +47,8 @@ const DisplaySociety = (props) => {
                         })}
                     </div>
                 </div>
-            </div>
-            <div className="container row text-start justify-content-between society-details">
+            </section>
+            <section id='societyInfos' className="container row text-start justify-content-between society-details">
                 <div className="col-6">
                     <h2 className="fw-normal">{props.city}</h2>
                 </div>
@@ -58,14 +58,14 @@ const DisplaySociety = (props) => {
                 <div className="col-12 mb-3">
                     <h3 className="fw-normal fs-4"><a href={props.site} target="_blank" rel="noreferrer">{props.site}</a></h3>
                 </div>   
-            </div>
-            <div className="container row society-details">
+            </section>
+            <article id='societyAbout' className="container row society-details">
                 <div className="col-8 text-start">
                     <p className="text-decoration-underline">A propos :</p>
                     <p className="light-blue">{props.about}</p> 
                 </div>
                      
-            </div>
+            </article>
         </div>
     )
 }

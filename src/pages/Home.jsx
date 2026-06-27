@@ -44,19 +44,19 @@ const Home = () => {
 
             <main className="px-25">   
                 <div className={pageContent ? "container-fluid mt-5 p-0 page-content" : "container-fluid mt-5 p-0 page-content d-none" }>
-                    <div  className="w-50 mt-50 container justify-self-center text-center">
+                    <section id='presentation' className="w-50 mt-50 container justify-self-center text-center">
                         <h1 className="">Trouve ton artisan en Auvergne-Rhône-Alpes</h1>
                         <h2>Comment trouver mon artisan?</h2>
                         <p className="mx-auto">
                             (1) Après avoir choisi la catégorie dans le menu, (2) sélectionnez un artisan et <br />
                             (3) le contacter via le formulaire de contact. (4) Une réponse sera apportée sous 48H.
                         </p>
-                    </div>
+                    </section>
                     <div className="container p-0">
                         <div className="separate"></div>
                     </div>
                     
-                    <div className="container-fluid p-0">
+                    <section id='monthSocities' className="container-fluid p-0">
                         <h2 className="text-center">Artisans du mois</h2>
                         <div className="row justify-content-evenly">
                             {top3.map((top3) => (
@@ -73,7 +73,7 @@ const Home = () => {
                         ))}
                         </div>
                         
-                    </div>  
+                    </section>  
                 </div>            
                     
             </main>

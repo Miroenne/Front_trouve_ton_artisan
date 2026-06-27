@@ -12,7 +12,7 @@ const Footer = () => {
     return(
 
         <div className="container-fluid p-4 mt-5">
-            <div className="container-fluid row justify-content-evenly">
+            <section id='ownerInformations' className="container-fluid row justify-content-evenly">
                 <div className="col-4 text-center">
                     <div className="mx-auto w-50 text-start">
                         <p>Conseil Régional</p>
@@ -28,11 +28,11 @@ const Footer = () => {
                         <p>France</p>
                     </div>                    
                 </div>
-            </div>
+            </section>
             <div className=" p-0 row">
                 <div className="mx-auto white-separate separate"></div>
             </div>
-            <div className="container text-center">
+            <section id='helpfulLinks' className="container text-center">
                 <div className="mx-auto">
                     <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Mentions légales</a>
                     <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Données personnelles</a>
@@ -47,7 +47,7 @@ const Footer = () => {
                     <a className="text-decoration-none mx-3 mx-md-5 text-reset" href="/error">Gestion des cookies</a>
                 </div>
                 
-            </div>
+            </section>
         </div>
     )
 }
